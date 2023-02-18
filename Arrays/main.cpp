@@ -5,8 +5,13 @@ using namespace std;
 #define tab "\t"; 
 
 void FillRand(int arr[], const int n); // прототип функции
+void FillRand(double arr[], const int n); // прототип функции
+
 void Print(int arr[], const int n);
+void Print(double arr[], const int n);
+
 void Sort(int arr[], const int n);
+void Sort(double arr[], const int n);
 
 void main()
 {
@@ -20,11 +25,12 @@ void main()
 	Print(arr, n);
 	
 	const int Size = 8;
-	int brr[Size];
+	double brr[Size];
 	FillRand(brr, Size);
 	Print(brr, Size);
 	Sort(brr, Size);
 	Print(brr, Size);
+	
 	
 }
 // Реализация функции
@@ -61,3 +67,4 @@ void Sort(int arr[], const int n)
 		}
 	}
 }
+
