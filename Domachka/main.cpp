@@ -62,6 +62,9 @@ void ShiftRight(double arr[], const int n, int sdvg=0);
 void Sort(int arr[], const int n);
 void Sort(double arr[], const int n);
 void Sort(char arr[], const int n);
+void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS);
+void Sort (double arr[ROWS][COLS], const int ROWS, const int COLS);
+void Sort(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 //void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
@@ -122,6 +125,8 @@ void main()
 	cout << "Минимальное значение массива: " << MinValueIn(i_arr_2, ROWS, COLS) << endl;
 	MaxValueIn(i_arr_2, ROWS, COLS);
 	cout << "Максимальное значение массива: " << MaxValueIn(i_arr_2, ROWS, COLS) << endl;
+	Sort(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
 
 	double d_brr_2[ROWS][COLS]; // массив для дубля
 	FillRand(d_brr_2, ROWS, COLS);
@@ -134,6 +139,8 @@ void main()
 	cout << "Минимальное значение массива: " << MinValueIn(d_brr_2, ROWS, COLS) << endl;
 	MaxValueIn(d_brr_2, ROWS, COLS);
 	cout << "Максимальное значение массива: " << MaxValueIn(d_brr_2, ROWS, COLS) << endl;
+	Sort(d_brr_2, ROWS, COLS);
+	Print(d_brr_2, ROWS, COLS);
 
 	//для чаррр=====================================
 	const int Value= 10; 
@@ -150,6 +157,7 @@ void main()
 	cout << "Минимальное значение массива: " << MinValueIn(crr, Value) << endl;
 	MaxValueIn(crr, Value);
 	cout << "Максимальное значение массива: " << MaxValueIn(crr, Value) << endl;
+	
 
 	char TAB[ROWS][COLS]; // двухмерник для чара
 	FillRand(TAB, ROWS, COLS);
@@ -162,7 +170,11 @@ void main()
 	cout << "Минимальное значение массива: " << MinValueIn(TAB, ROWS, COLS) << endl;
 	MaxValueIn(TAB, ROWS, COLS);
 	cout << "Максимальное значение массива: " << MaxValueIn(TAB, ROWS, COLS) << endl;
+	Sort(TAB, ROWS, COLS);
+	Print(TAB, ROWS, COLS);
+
 }
+
 
 
 // Случайные числа массива 
@@ -408,7 +420,6 @@ int MinValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS)
 		{
 			if (arr[i][j] < min) min = arr[i][j];
 		}
-		
 	}
 	return min;
 	cout << endl;
@@ -521,6 +532,7 @@ char MaxValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS)
 	return max;
 	cout << endl;
 }
+//_____________________________________________________//
 // сдвиг влево
 void ShiftLeft(int arr[], const int n, int number_of_shifts)
 {
@@ -575,6 +587,7 @@ void ShiftRight(double arr[], const int n, int sdvg)
 	}
 	cout << endl;
 }
+//--------------------------------------------------------//
 // сортировка массива:
 void Sort(int arr[], const int n)
 {
@@ -621,4 +634,84 @@ void Sort(char arr[], const int n)
 			}
 		}
 	}
+}
+
+void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int interation = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			for (int k = i; k < ROWS; k++) // перебирает строки 
+			{
+				for (int l = k == i ? j + 1: 0; l < COLS; l++) // перебирает элемент
+				{
+					interation++;
+					// выбранный элемент - arr[i][j] 
+					//перебираймый элемент arr [k][l]
+					if (arr[k][l] < arr[i][j])
+					{
+						int buffer = arr[i][j];
+						arr[i][j] = arr[k][l];
+						arr[k][l] = buffer; 
+					} 
+				}
+			}
+		}
+	}
+	cout << "Массив отсортирован за " << interation << "итераций\n";
+}
+// Для дробных 
+void Sort(double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int interation = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			for (int k = i; k < ROWS; k++) // перебирает строки 
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++) // перебирает элемент
+				{
+					interation++;
+					// выбранный элемент - arr[i][j] 
+					//перебираймый элемент arr [k][l]
+					if (arr[k][l] < arr[i][j])
+					{
+						double buffer = arr[i][j];
+						arr[i][j] = arr[k][l];
+						arr[k][l] = buffer;
+					}
+				}
+			}
+		}
+	}
+	cout << "Массив отсортирован за " << interation << "итераций\n";
+}
+void Sort(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int interation = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			for (int k = i; k < ROWS; k++) // перебирает строки 
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++) // перебирает элемент
+				{
+					interation++;
+					// выбранный элемент - arr[i][j] 
+					//перебираймый элемент arr [k][l]
+					if (arr[k][l] < arr[i][j])
+					{
+						char buffer = arr[i][j];
+						arr[i][j] = arr[k][l];
+						arr[k][l] = buffer;
+					}
+				}
+			}
+		}
+	}
+	cout << "Массив отсортирован за " << interation << "итераций\n";
 }
