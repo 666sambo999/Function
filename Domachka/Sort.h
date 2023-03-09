@@ -1,6 +1,6 @@
 #pragma once
 #include "constant.h"
-
+#include "stdafx.h"
 template <typename T>
 void Sort(T arr[], const int n);
 
