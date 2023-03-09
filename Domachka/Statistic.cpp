@@ -27,7 +27,6 @@ T Sum(T arr[ROWS][COLS], const int ROWS, const int COLS)
 	cout << endl;
 }
 
-
 // Cреднее значение 
 template <typename T>
 double AVG(T arr[], const int n)

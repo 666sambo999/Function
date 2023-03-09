@@ -1,11 +1,14 @@
-#include "stdafx.h"
+п»ї#include "stdafx.h"
 #include "constant.h"
 #include "FillRand.h"
 #include "Print.h"
+#include "Print.cpp"
 #include "Statistic.h"
+#include "Statistic.cpp"
 #include "Sort.h"
+#include "Sort.cpp"
 
-
+#define delimiter "\n----------------------------\n"
 
 void main()
 {
@@ -13,29 +16,30 @@ void main()
 	
 	const int n = 10;
 	int arr[n];
-	// Сумма элементов массива 
+	// РЎСѓРјРјР° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° 
 	FillRand(arr, n);
 	Print(arr, n);
 	Sum(arr, n);
-	cout << "Сумма элементов массива: " << Sum(arr,n) << endl;
-	//cout << "Средне-арифметическое элементов массива: " << double(Sum (arr,n)) / n << endl; // 2 вариант, считает сразу
-	cout << "Средне-арифметическое элементов массива: " << AVG(arr,n) << endl; 
-	//Минимальное
+	cout << "РЎСѓРјРјР° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << Sum(arr,n) << endl;
+	//cout << "РЎСЂРµРґРЅРµ-Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << double(Sum (arr,n)) / n << endl; // 2 РІР°СЂРёР°РЅС‚, СЃС‡РёС‚Р°РµС‚ СЃСЂР°Р·Сѓ
+	cout << "РЎСЂРµРґРЅРµ-Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << AVG(arr,n) << endl; 
+	//РњРёРЅРёРјР°Р»СЊРЅРѕРµ
 	MinValueIn(arr, n);
-	cout << "Минимальное значение массива: " << MinValueIn (arr,n) << endl;
+	cout << "РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР°: " << MinValueIn (arr,n) << endl;
 	// max
 	MaxValueIn(arr, n);
-	cout << "Максимальное значение массива: " << MaxValueIn (arr,n) << endl;
-	// сдвиг влево 
+	cout << "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР°: " << MaxValueIn (arr,n) << endl;
+	// СЃРґРІРёРі РІР»РµРІРѕ 
 	int number_of_shifts = 0;
-	cout << "Введите количество сдвига: "; cin >> number_of_shifts;
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРґРІРёРіР°: "; cin >> number_of_shifts;
 	ShiftLeft(arr, n, number_of_shifts);
 	Print(arr, n);
-	// сдвиг вправо 
+	// СЃРґРІРёРі РІРїСЂР°РІРѕ 
 	int sdvg=0;
-	cout << "Введите количество сдвига: "; cin >> sdvg;
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРґРІРёРіР°: "; cin >> sdvg;
 	ShiftRight(arr, n, sdvg);
 	Print(arr, n);
+	cout << delimiter << endl; 
 	//========================================================//
 	const int Size = 8;
 	double brr[Size];
@@ -44,44 +48,48 @@ void main()
 	Sort(brr, Size);
 	Print(brr, Size);
 	Sum(brr, Size);
-	cout << "Сумма элементов массива: " << Sum(brr, Size) << endl;
+	cout << "РЎСѓРјРјР° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << Sum(brr, Size) << endl;
 	AVG(brr, Size);
-	cout << "Средне-арифметическое элементов массива: " << AVG(brr, Size) << endl;
+	cout << "РЎСЂРµРґРЅРµ-Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << AVG(brr, Size) << endl;
 	MinValueIn(brr, Size);
-	cout << "Минимальное значение массива: " << MinValueIn(brr, Size) << endl;
+	cout << "РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР°: " << MinValueIn(brr, Size) << endl;
 	MaxValueIn(brr, Size);
-	cout << "Максимальное значение массива: " << MaxValueIn(brr, Size) << endl;
+	cout << "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР°: " << MaxValueIn(brr, Size) << endl;
+	int number_of_lefts = 0;
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРґРІРёРіР°: "; cin >> number_of_lefts;
+	ShiftLeft(brr, Size, number_of_lefts);
+	Print(brr, Size);
 	//-------------------------------------------------------//
-	// Двумерный массив
-	int i_arr_2[ROWS][COLS];// i массив интовых элементов 
+	// Р”РІСѓРјРµСЂРЅС‹Р№ РјР°СЃСЃРёРІ
+	int i_arr_2[ROWS][COLS];// i РјР°СЃСЃРёРІ РёРЅС‚РѕРІС‹С… СЌР»РµРјРµРЅС‚РѕРІ 
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 	Sum(i_arr_2, ROWS, COLS);
-	cout << "Сумма элементов массива: " << Sum(i_arr_2, ROWS, COLS) << endl;
+	cout << "РЎСѓРјРјР° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << Sum(i_arr_2, ROWS, COLS) << endl;
 	AVG(i_arr_2, ROWS, COLS);
-	cout << "Средне-арифметическое элементов массива: " << AVG(i_arr_2, ROWS, COLS) << endl;
+	cout << "РЎСЂРµРґРЅРµ-Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << AVG(i_arr_2, ROWS, COLS) << endl;
 	MinValueIn(i_arr_2, ROWS,COLS);
-	cout << "Минимальное значение массива: " << MinValueIn(i_arr_2, ROWS, COLS) << endl;
+	cout << "РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР°: " << MinValueIn(i_arr_2, ROWS, COLS) << endl;
 	MaxValueIn(i_arr_2, ROWS, COLS);
-	cout << "Максимальное значение массива: " << MaxValueIn(i_arr_2, ROWS, COLS) << endl;
+	cout << "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР°: " << MaxValueIn(i_arr_2, ROWS, COLS) << endl;
 	Sort(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 
-	double d_brr_2[ROWS][COLS]; // массив для дубля
+	double d_brr_2[ROWS][COLS]; // РјР°СЃСЃРёРІ РґР»СЏ РґСѓР±Р»СЏ
 	FillRand(d_brr_2, ROWS, COLS);
 	Print(d_brr_2, ROWS, COLS);
 	Sum(d_brr_2, ROWS, COLS);
-	cout << "Сумма элементов массива: " << Sum(d_brr_2, ROWS, COLS) << endl;
+	cout << "РЎСѓРјРјР° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << Sum(d_brr_2, ROWS, COLS) << endl;
 	AVG(d_brr_2, ROWS, COLS);
-	cout << "Средне-арифметическое элементов массива: " << AVG(d_brr_2, ROWS, COLS) << endl;
+	cout << "РЎСЂРµРґРЅРµ-Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << AVG(d_brr_2, ROWS, COLS) << endl;
 	MinValueIn(d_brr_2, ROWS, COLS);
-	cout << "Минимальное значение массива: " << MinValueIn(d_brr_2, ROWS, COLS) << endl;
+	cout << "РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР°: " << MinValueIn(d_brr_2, ROWS, COLS) << endl;
 	MaxValueIn(d_brr_2, ROWS, COLS);
-	cout << "Максимальное значение массива: " << MaxValueIn(d_brr_2, ROWS, COLS) << endl;
+	cout << "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР°: " << MaxValueIn(d_brr_2, ROWS, COLS) << endl;
 	Sort(d_brr_2, ROWS, COLS);
 	Print(d_brr_2, ROWS, COLS);
 
-	//для чаррр=====================================
+	//РґР»СЏ С‡Р°СЂСЂСЂ=====================================
 	const int Value= 10; 
 	char crr[Value];
 	FillRand(crr, Value);
@@ -89,28 +97,26 @@ void main()
 	Sort(crr, Value);
 	Print(crr, Value);
 	Sum(crr, Value);
-	cout << "Сумма элементов массива: " << Sum(crr, Value) << endl;
+	cout << "РЎСѓРјРјР° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << Sum(crr, Value) << endl;
 	AVG(crr, Value);
-	cout << "Средне-арифметическое элементов массива: " << AVG(crr, Value) << endl;
+	cout << "РЎСЂРµРґРЅРµ-Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << AVG(crr, Value) << endl;
 	MinValueIn(crr, Value);
-	cout << "Минимальное значение массива: " << MinValueIn(crr, Value) << endl;
+	cout << "РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР°: " << MinValueIn(crr, Value) << endl;
 	MaxValueIn(crr, Value);
-	cout << "Максимальное значение массива: " << MaxValueIn(crr, Value) << endl;
+	cout << "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР°: " << MaxValueIn(crr, Value) << endl;
 	
-
-	char TAB[ROWS][COLS]; // двухмерник для чара
+	char TAB[ROWS][COLS]; // РґРІСѓС…РјРµСЂРЅРёРє РґР»СЏ С‡Р°СЂР°
 	FillRand(TAB, ROWS, COLS);
 	Print(TAB, ROWS, COLS);
 	Sum(TAB, ROWS, COLS);
-	cout << "Сумма элементов массива: " << Sum(TAB, ROWS, COLS) << endl;
+	cout << "РЎСѓРјРјР° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << Sum(TAB, ROWS, COLS) << endl;
 	AVG(TAB, ROWS, COLS);
-	cout << "Средне-арифметическое элементов массива: " << AVG(TAB, ROWS, COLS) << endl;
+	cout << "РЎСЂРµРґРЅРµ-Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: " << AVG(TAB, ROWS, COLS) << endl;
 	MinValueIn(TAB, ROWS, COLS);
-	cout << "Минимальное значение массива: " << MinValueIn(TAB, ROWS, COLS) << endl;
+	cout << "РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР°: " << MinValueIn(TAB, ROWS, COLS) << endl;
 	MaxValueIn(TAB, ROWS, COLS);
-	cout << "Максимальное значение массива: " << MaxValueIn(TAB, ROWS, COLS) << endl;
+	cout << "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР°: " << MaxValueIn(TAB, ROWS, COLS) << endl;
 	Sort(TAB, ROWS, COLS);
 	Print(TAB, ROWS, COLS);
-
 }
 
